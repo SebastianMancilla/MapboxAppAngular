@@ -21,7 +21,7 @@ import * as mapboxgl from 'mapbox-gl'
 })
 export class ZoomRangeComponent{
   @ViewChild('map') divMap!: ElementRef;
-  zoomLevel: number = 10;
+  zoomLevel: number = 11;
   map!: mapboxgl.Map;
   latLon: [number, number] = [-90.577745, 14.678279];
   
@@ -30,7 +30,7 @@ export class ZoomRangeComponent{
       container: this.divMap.nativeElement,
       style: 'mapbox://styles/mapbox/streets-v11',
       center: this.latLon,
-      zoom: this.zoomLevel,
+      zoom: this.zoomLevel
     });
 
     this.map.on('zoom', () =>{
@@ -49,12 +49,6 @@ export class ZoomRangeComponent{
       const {lng, lat} = target.getCenter();
       this.latLon = [lng, lat];
     });
-  }
-
-  ngOnDestroy(): void {
-    this.map.off('zoom', () => {});
-    this.map.off('zoomend', () => {});
-    this.map.off('move', () => {});
   }
 
 

@@ -1,1 +1,19 @@
-<p>marcadores works!</p>
+<ul class="list-group">
+  <li
+    class="list-group-item list-group-item-warning list-group-item-action"
+    (click)="addMarker()"
+  >
+    + Agregar
+  </li>
+  <li
+    class="list-group-item list-group-action text-white"
+    (click)="goMarker(marker.marker!)"
+    *ngFor="let marker of markers; let i = index"
+    [ngStyle]="{ 'background-color': marker.color }"
+  >
+    Marker {{ i + 1 }}
+    <button class="btn  btn-outline-light" (click)="deleteMarker(i)">X</button>
+  </li>
+</ul>
+
+<div #map class="map-container" style="height: 100vh; width: 200vh"></div>
